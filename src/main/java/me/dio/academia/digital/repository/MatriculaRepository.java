@@ -4,7 +4,10 @@ import me.dio.academia.digital.entity.Matricula;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.query.Param;
 
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -22,6 +25,9 @@ public interface MatriculaRepository extends JpaRepository<Matricula, Long> {
   List<Matricula> findAlunosMatriculadosBairro(String bairro);
 
   //List<Matricula> findByAlunoBairro(String bairro);
+  @Query("SELECT m FROM Matricula m WHERE m.aluno.dataDeNascimento = :dataDeNascimento")
+  List<Matricula> findAlunosMatriculadosMesmaDataNascimento(@Param("dataDeNascimento") LocalDate dataDeNascimento);
+
 
 
 }

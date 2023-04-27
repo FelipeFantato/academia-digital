@@ -8,6 +8,8 @@ import me.dio.academia.digital.infra.utils.JavaTimeUtils;
 import me.dio.academia.digital.repository.AlunoRepository;
 import me.dio.academia.digital.service.IAlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -63,6 +65,15 @@ public class AlunoServiceImpl implements IAlunoService {
 
     return aluno.getAvaliacoes();
 
+  }
+
+  public Page<Aluno> getAll(String dataDeNascimento, Pageable pageable) {
+    if (dataDeNascimento != null) {
+      LocalDate date = LocalDate.parse(dataDeNascimento);
+      return repository.findByDataDeNascimento(date, pageable);
+    } else {
+      return repository.findAll(pageable);
+    }
   }
 
 }
