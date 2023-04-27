@@ -1,6 +1,6 @@
-Title: Novas funcionalidades para o projeto Academia Digital
+Novas funcionalidades para o projeto Academia Digital
 
-Introduction:
+
 Este projeto trata-se de um sistema de gestão de alunos de uma academia, desenvolvido utilizando o Spring Boot Framework. Foram adicionadas duas novas funcionalidades ao projeto, que serão detalhadas a seguir.
 
 Busca por alunos matriculados em um bairro específico
